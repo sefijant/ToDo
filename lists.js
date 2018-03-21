@@ -5,6 +5,7 @@ app.controller("MainController", function ($scope) {
     $scope.categories = categories;
 
     //var json = $.getJSON("test.json");
+    
     lists = {
         "lists": [
             {
@@ -194,6 +195,7 @@ app.controller("MainController", function ($scope) {
             }
         ]
     };
+    localStorage.setItem('db', JSON.stringify(lists));
 
     $scope.travelLists = [];
     $scope.armylLists = [];
