@@ -4,19 +4,31 @@
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
    <!-- Compiled and minified CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+   <style>
+      .collection-width
+      {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+ 
+      html 
+      {
+       font-family: GillSans, Calibri, Trebuchet, sans-serif;
+      }
+    </style>
 
 </head>
 <body dir= "rtl" ng-controller="MainController">
-    <nav>
-        <div class="nav-wrapper">
-          <span  class="brand-logo center">ToDo Boom</span>
-        </div>
-      </nav>
 <div class="container">
   <center>
-      <p>רשימות לעצלנים...כי למי יש כוח לאסוף מידע בעצמו</p>
-      <p>אנא בחר בקטגוריה של הרשימה אותה אתה מחפש:</p>
+    <div class="card-panel">
+    <h1 style="margin-bottom:0;">ToDo Boom</h1>
+      <p style="margin-top:0">רשימות לעצלנים...כי למי יש כוח לאסוף מידע בעצמו</p>
+    </div>
+      <br>
+      <p style="margin-top:10px">אנא בחר בקטגוריה של הרשימה אותה אתה מחפש:</p>
   </center>
 
   
@@ -42,17 +54,21 @@
   
     <div id="shopping" class="modal">
         <div class="modal-content" dir="rtl">
-          <img class="activator" src=".\\resources\\shopping.jpg">
+          
           <h4 class="center-align">קניות</h4>
 
           <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
               <li ng-repeat="shoppinglist in shoppingLists">
                 <div class="collapsible-header"><i class="material-icons">done_all</i>{{shoppinglist.name}}</div>
-                <div class="collapsible-body">
-                  <ul>
-                    <li ng-repeat="item in shoppinglist.items">{{item}}</li>
+                <div class="collapsible-body valign-wrapper right-align" style="padding-top:0;padding-bottom:0;">
+                  <ul class="collection collection-width">
+                    <li class="collection-item" ng-repeat="shoppingitem in shoppinglist.items">
+                        <input type="checkbox" class="filled-in" id="{{cat.name}}" ng-model="cat._selected"/>
+                        <label for="shopping + $index">{{shoppingitem}}</label>
+                     </li>
                   </ul>
                 </div>
+              
               </li>
             </ul>
         </div>
@@ -66,20 +82,24 @@
 
       <div id="army" class="modal">
           <div class="modal-content" dir="rtl">
-            <img class="activator" src=".\\resources\\army.jpg">
-            <h4 class="center-align">צבא</h4>
-  
-            <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
-                <li ng-repeat="armylist in armyLists">
-                  <div class="collapsible-header"><i class="material-icons">done_all</i>{{armylist.name}}</div>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li ng-repeat="item in armylist.items">{{item}}</li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-          </div>
+              
+              <h4 class="center-align">צבא</h4>
+    
+              <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
+                  <li ng-repeat="armylist in armyLists">
+                    <div class="collapsible-header"><i class="material-icons">done_all</i>{{armylist.name}}</div>
+                    <div class="collapsible-body valign-wrapper right-align" style="padding-top:0;padding-bottom:0;">
+                      <ul class="collection collection-width">
+                        <li class="collection-item" ng-repeat="armyitem in armylist.items">
+                            <input type="checkbox" class="filled-in" id="{{armyitem.name}}" ng-model="armyitem._selected"/>
+                            <label for="army + $index">{{armyitem}}</label>
+                         </li>
+                      </ul>
+                    </div>
+                  
+                  </li>
+                </ul>
+            </div>
           <div class="modal-footer">
             <center>
                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">סגור</a>
@@ -90,20 +110,24 @@
 
         <div id="travel" class="modal">
             <div class="modal-content" dir="rtl">
-              <img class="activator" src=".\\resources\\travel.jpg">
-              <h4 class="center-align">טיולים</h4>
-    
-              <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
-                  <li ng-repeat="travellist in travelLists">
-                    <div class="collapsible-header"><i class="material-icons">done_all</i>{{travellist.name}}</div>
-                    <div class="collapsible-body">
-                      <ul>
-                        <li ng-repeat="travelitem in travellist.items">{{travelitem}}</li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-            </div>
+                
+                <h4 class="center-align">טיולים</h4>
+      
+                <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
+                    <li ng-repeat="travellist in travelLists">
+                      <div class="collapsible-header"><i class="material-icons">done_all</i>{{travellist.name}}</div>
+                      <div class="collapsible-body valign-wrapper right-align" style="padding-top:0;padding-bottom:0;">
+                        <ul class="collection collection-width">
+                          <li class="collection-item" ng-repeat="travelitem in travellist.items">
+                              <input type="checkbox" class="filled-in" id="{{travelitem.name}}" ng-model="travelitem._selected"/>
+                              <label for="travel + $index">{{travelitem}}</label>
+                           </li>
+                        </ul>
+                      </div>
+                    
+                    </li>
+                  </ul>
+              </div>
             <div class="modal-footer">
               <center>
                   <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">סגור</a>
@@ -114,17 +138,20 @@
 
           <div id="other" class="modal">
               <div class="modal-content" dir="rtl">
-                <img class="activator" src=".\\resources\\else.jpg">
                 <h4 class="center-align">אחר</h4>
       
                 <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
                     <li ng-repeat="otherlist in otherLists">
                       <div class="collapsible-header"><i class="material-icons">done_all</i>{{otherlist.name}}</div>
-                      <div class="collapsible-body">
-                        <ul>
-                          <li ng-repeat="otheritem in otherlist.items">{{otheritem}}</li>
+                      <div class="collapsible-body valign-wrapper right-align" style="padding-top:0;padding-bottom:0;">
+                        <ul class="collection collection-width">
+                          <li class="collection-item" ng-repeat="otheritem in otherlist.items">
+                              <input type="checkbox" class="filled-in" id="{{otheritem.name}}" ng-model="otheritem._selected"/>
+                              <label for="other + $index">{{otheritem}}</label>
+                           </li>
                         </ul>
                       </div>
+                    
                     </li>
                   </ul>
               </div>
@@ -146,7 +173,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 <script type="text/javascript" src="lists.js"></script>
 </body>
 </html>
