@@ -4,6 +4,7 @@ app.controller("MainController", function ($scope) {
     var categories = [{ "name": "קניות", "image": ".\\resources\\shopping.jpg", "modal": "#shopping" }, { "name": "צבא", "image": ".\\resources\\army.jpg", "modal": "#army" }, { "name": "טיולים", "image": ".\\resources\\travel.jpg", "modal": "#travel" }, { "name": "אחר", "image": ".\\resources\\else.jpg", "modal": "#other" }];
     $scope.categories = categories;
 
+    //var json = $.getJSON("test.json");
     lists = {
         "lists": [
             {
