@@ -5,8 +5,6 @@
    <!-- Compiled and minified CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   
 
 </head>
 <body dir= "rtl" ng-controller="MainController">
@@ -24,7 +22,7 @@
   
   <div class="row">
       <div ng-repeat="Category in categories" class="col s3">
-        <div class="card">
+        <div class="card hoverable">
           <div  class="card-image">
             <img src={{Category.image}}>
             <span class="card-title">{{Category.name}}</span>
@@ -33,7 +31,7 @@
             <p>{{Category.name}}</p>
           </div>
           <div class="card-action">
-            <a data-toggle="modal" href={{Category.modal}}>לצפייה ברשימות</a>
+            <a class="modal-trigger" href={{Category.modal}}>לצפייה ברשימות</a>
           </div>
         </div>
       </div>
@@ -42,111 +40,113 @@
   
   
   
-  <div id="shopping" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>רשימות לטיולים וזה</p>
-        <div ng-repeat="list in travelLists">{{list.name}}</div>
-        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#tripList1">List1</button>
-        <div id="tripList1" class="collapse">
-    vvvvמלא דברים שאנשים לוקחים לדרום אמריקה
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+    <div id="shopping" class="modal">
+        <div class="modal-content" dir="rtl">
+          <img class="activator" src=".\\resources\\shopping.jpg">
+          <h4 class="center-align">קניות</h4>
 
-  </div>
-</div>
+          <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
+              <li ng-repeat="shoppinglist in shoppingLists">
+                <div class="collapsible-header"><i class="material-icons">done_all</i>{{shoppinglist.name}}</div>
+                <div class="collapsible-body">
+                  <ul>
+                    <li ng-repeat="item in shoppinglist.items">{{item}}</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <center>
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">סגור</a>
+          </center>
+          
+        </div>
+      </div>
 
-  <div id="myModal2" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>רשימות לצבא וזה</p>
-        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#armyList1">List1</button>
-        <div id="armyList1" class="collapse">
-    ציוד להגנ"ש
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+      <div id="army" class="modal">
+          <div class="modal-content" dir="rtl">
+            <img class="activator" src=".\\resources\\army.jpg">
+            <h4 class="center-align">צבא</h4>
+  
+            <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
+                <li ng-repeat="armylist in armyLists">
+                  <div class="collapsible-header"><i class="material-icons">done_all</i>{{armylist.name}}</div>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li ng-repeat="item in armylist.items">{{item}}</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+          </div>
+          <div class="modal-footer">
+            <center>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">סגור</a>
+            </center>
+            
+          </div>
+        </div>
 
-  </div>
-</div>
+        <div id="travel" class="modal">
+            <div class="modal-content" dir="rtl">
+              <img class="activator" src=".\\resources\\travel.jpg">
+              <h4 class="center-align">טיולים</h4>
+    
+              <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
+                  <li ng-repeat="travellist in travelLists">
+                    <div class="collapsible-header"><i class="material-icons">done_all</i>{{travellist.name}}</div>
+                    <div class="collapsible-body">
+                      <ul>
+                        <li ng-repeat="travelitem in travellist.items">{{travelitem}}</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+              <center>
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">סגור</a>
+              </center>
+              
+            </div>
+          </div>
 
-  <div id="myModal3" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>רשימות קניות</p>
-        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#shoppingList1">List1</button>
-        <div id="shoppingList1" class="collapse">
-    מלא דברים שעולים מלא כסף
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-  <div id="myModal4" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>אחר וזה</p>
-        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#otherList1">List1</button>
-        <div id="otherList1" class="collapse">
-    משהו הזוי שאין מצב שנחשוב עליו
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
+          <div id="other" class="modal">
+              <div class="modal-content" dir="rtl">
+                <img class="activator" src=".\\resources\\else.jpg">
+                <h4 class="center-align">אחר</h4>
+      
+                <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
+                    <li ng-repeat="list in otherlLists">
+                      <div class="collapsible-header"><i class="material-icons">done_all</i>{{list.name}}</div>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li ng-repeat="item in list.items">{{item}}</li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+              <div class="modal-footer">
+                <center>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">סגור</a>
+                </center>
+                
+              </div>
+            </div>
   
   
   
 </div>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
         
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script type="text/javascript" src="lists.js"></script>
 </body>
 </html>

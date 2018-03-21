@@ -5,7 +5,15 @@ app.controller("MainController", function ($scope) {
     $scope.categories = categories;
 
     //var json = $.getJSON("test.json");
+    (function ($) {
+        $(function () {
     
+            //initialize all modals           
+            $('.modal').modal();
+    
+        }); // end of document ready
+    })(jQuery);
+
     lists = {
         "lists": [
             {
@@ -199,7 +207,7 @@ app.controller("MainController", function ($scope) {
     //lists = localStorage.getItem('db');
 
     $scope.travelLists = [];
-    $scope.armylLists = [];
+    $scope.armyLists = [];
     $scope.shoppingLists = [];
     $scope.otherLists = [];
     for (var i in lists.lists) {
@@ -207,7 +215,7 @@ app.controller("MainController", function ($scope) {
             $scope.travelLists.push(lists.lists[i]);
         }
         else if (lists.lists[i].category == "army") {
-            $scope.armylLists.push(lists.lists[i]);
+            $scope.armyLists.push(lists.lists[i]);
         }
         else if (lists.lists[i].category == "shopping") {
             $scope.shoppingLists.push(lists.lists[i]);
