@@ -4,7 +4,6 @@ app.controller("MainController", function ($scope) {
     var categories = [{ "name": "קניות", "image": ".\\resources\\shopping.jpg", "modal": "#shopping" }, { "name": "צבא", "image": ".\\resources\\army.jpg", "modal": "#army" }, { "name": "טיולים", "image": ".\\resources\\travel.jpg", "modal": "#travel" }, { "name": "אחר", "image": ".\\resources\\else.jpg", "modal": "#other" }];
     $scope.categories = categories;
 
-    //var json = $.getJSON("test.json");
     (function ($) {
         $(function () {
     
@@ -203,9 +202,7 @@ app.controller("MainController", function ($scope) {
             }
         ]
     };
-    //localStorage.setItem('db', JSON.stringify(lists));
-    //lists = localStorage.getItem('db');
-
+    localStorage.setItem('allLists', JSON.stringify(lists));
     $scope.travelLists = [];
     $scope.armyLists = [];
     $scope.shoppingLists = [];
@@ -225,6 +222,8 @@ app.controller("MainController", function ($scope) {
         }
     }
 
+    
+    var tmp = localStorage.getItem('allLists');
 
 });
 
