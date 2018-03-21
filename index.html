@@ -118,11 +118,11 @@
                 <h4 class="center-align">אחר</h4>
       
                 <ul class="collapsible popout" data-collapsible="accordion" dir="rtl">
-                    <li ng-repeat="list in otherlLists">
-                      <div class="collapsible-header"><i class="material-icons">done_all</i>{{list.name}}</div>
+                    <li ng-repeat="otherlist in otherLists">
+                      <div class="collapsible-header"><i class="material-icons">done_all</i>{{otherlist.name}}</div>
                       <div class="collapsible-body">
                         <ul>
-                          <li ng-repeat="item in list.items">{{item}}</li>
+                          <li ng-repeat="otheritem in otherlist.items">{{otheritem}}</li>
                         </ul>
                       </div>
                     </li>
