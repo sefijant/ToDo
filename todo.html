@@ -149,12 +149,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script type="text/javascript" src="lists.js"></script>
 <script>
-  var fs = require('fs');
-  fs.writeFile("lists.json", lists, function(err) {
-    if (err) {
-        console.log(err);
-    }
-});
+  localStorage.setItem('db', JSON.stringify(lists));
 </script>
 </body>
 </html>
